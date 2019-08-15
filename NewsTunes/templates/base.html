@@ -1,0 +1,72 @@
+<!-- templates/base.html -->
+<!doctype html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/Features-Boxed.css'%}">
+<link rel="stylesheet" href="{% static 'css/Navigation-Clean.css' %}">
+<link rel="stylesheet" href="{% static 'fonts/fontawesome-all.min.css' %}">
+<link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'fonts/fontawesome5-overrides.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/checkbox.css' %}">
+<link rel="stylesheet" href="{% static 'css/Login-Form-Clean.css' %}">
+<link rel="stylesheet" href="{% static 'css/Navigation-Clean.css' %}">
+<link rel="stylesheet" href="{% static 'css/Navigation-with-Search.css' %}">
+<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	{% block redirection %}
+	{% endblock %}
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<title>{% block title %}News Tunes{% endblock %}</title>
+
+	<nav class="navbar navbar-light navbar-expand-md navigation-clean nav1 header-col" >
+	  
+	  <div class="container-fluid"><a class="navbar-brand" href="#"><img src="{% static 'img/logo1.jpeg'%}" width="50px"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+	
+	  
+	  <div class="collapse navbar-collapse header-right" id="navbarSupportedContent" >
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link " href="{% url 'home' %}" style="color: white; font-size: 20px;">Home</a>
+	      </li>
+      	{% if user.is_authenticated %}
+	      <li class="nav-item">
+	        <a class="nav-link  " href="{% url 'profile' %}" style="color: white; font-size: 20px;">Preferences</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link  " href="{% url 'logout' %}" style="color: white; font-size: 20px;">Logout</a>
+	      </li>
+		{% else %}
+	      <li class="nav-item">
+	        <a class="nav-link " href="{% url 'login' %}" style="color: white; font-size: 20px;">Login</a><br>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " href="{% url 'signup' %}" style="color: white; font-size: 20px;">SignUp</a>
+	      </li>
+		{% endif %}
+
+	    </ul>
+	  </div>
+	</nav>
+</head>
+<body class = "bd-color">
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+		<div id="footer">
+            <p id="copyright">&copy Copyright 2019, News-Tunes.</p>
+	    </div>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</div>
+</body>
+</html>
